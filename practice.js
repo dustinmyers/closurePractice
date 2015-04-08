@@ -64,12 +64,66 @@ var makeCounter = function() {
 
 
 /*
-  Write a function that accepts another function as it's first argument and returns a new function
-  (which invokes the original function that was passed in) that can only ever be executed once.
-  Once completed, add a second arguments that allows the function to be invoked N number of times.
+  Write a function(ONE) that accepts another function(TWO) as it's first argument and returns a new function(returned in ONE)
+  (which invokes the original function(two) that was passed in) that can only ever be executed once.
+
+  Once completed, add a second argument that allows the function(one) to be invoked N number of times.
   After the function has been called N number of times, console.log('STAHHP');
 */
 
+var one = function(two, n) {
+  var counter = 0;
+  return function() {
+    if (counter < n) {
+        counter++;
+        return two();
+      }
+    else {
+      console.log('STAHHP')
+    }    
+  }
+}
+
+var two = function() {
+  console.log("Its working")
+}
+
+var test = one(two, 4);
 
 
 
+
+
+
+
+
+
+/*var something = (function() {
+    var executed = false;
+    return function () {
+        if (!executed) {
+            executed = true; 
+            return "STAHHP"; 
+        }
+    };
+})();*/
+
+
+var something = function(){
+  var counter = 0;
+  if(counter < 5) {
+    console.log('STAHHP');
+    counter++;
+  }
+}
+
+var test = function(something) {
+  return function(){
+    something();
+    test = function(){
+    };
+  }
+};
+
+
+var run = test()
