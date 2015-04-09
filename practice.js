@@ -74,13 +74,13 @@ var makeCounter = function() {
 var one = function(two, n) {
   var counter = 0;
   return function() {
-    if (counter < n) {
-        counter++;
-        return two();
-      }
-    else {
-      console.log('STAHHP')
-    }    
+  if (counter < n) {
+      counter++;
+      return two();
+    }
+  else {
+    console.log('STAHHP')
+  }    
   }
 }
 
@@ -88,7 +88,7 @@ var two = function() {
   console.log("Its working")
 }
 
-var test = one(two, 4);
+var test = one(two);
 
 
 
